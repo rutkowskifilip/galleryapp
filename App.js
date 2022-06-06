@@ -3,8 +3,8 @@ import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Screen1 from "./components/Screen1";
-import Screen2 from "./components/Screen2";
+import Gallery from "./components/Gallery";
+import BigPhoto from "./components/BigPhoto";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,10 +13,10 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="s1"
-          component={Screen1}
+          name="Gallery"
+          component={Gallery}
           options={{
-            title: "title",
+            title: "Gallery",
             headerStyle: {
               backgroundColor: "#ff0000",
             },
@@ -27,7 +27,7 @@ function App() {
             },
           }}
         />
-        <Stack.Screen name="s2" component={Screen2} />
+        <Stack.Screen name="Photo" component={BigPhoto} />
       </Stack.Navigator>
     </NavigationContainer>
   );
