@@ -9,21 +9,13 @@ export default class BigPhoto extends Component {
     this.state = {};
   }
   share = async () => {
-    // const downloadPath = FileSystem.cacheDirectory + "fileName.jpg";
-    // // 1 - download the file to a local cache directory
-    // const { uri: localUrl } = await FileSystem.downloadAsync(
-    //   remoteURL,
-    //   downloadPath
-    // );
-    // // 2 - share it from your local storage :)
-    // Sharing.shareAsync(localUrl, {
-    //   mimeType: "image/jpeg", // Android
-    //   dialogTitle: "share-dialog title", // Android and Web
-    //   UTI: "image/jpeg", // iOS
-    // });
-    await Sharing.shareAsync(this.props.route.params.url, {
-      UTI: "image/jpeg", // iOS
-    });
+    try {
+      await Sharing.shareAsync(
+        "file://" + this.props.route.params.url.slice(5)
+      );
+    } catch (error) {
+      alert(error.message);
+    }
   };
   render() {
     console.log(this.props.route.params.url);

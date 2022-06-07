@@ -6,16 +6,22 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
 import * as Font from "expo-font";
 import * as MediaLibrary from "expo-media-library";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 export default class FotoItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      choosen: false,
+    };
   }
-
+  handleSelect = () => {
+    this.props.select(this.props.id);
+  };
   render() {
     return (
       <View
@@ -33,12 +39,29 @@ export default class FotoItem extends Component {
               id: this.props.id,
             });
           }}
+          onLongPress={() => {
+            this.handleSelect();
+            if (this.state.choosen) {
+              this.setState({ choosen: false });
+            } else {
+              this.setState({ choosen: true });
+            }
+          }}
         >
           <Image
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
+            style={[
+              this.state.choosen
+                ? {
+                    borderColor: "white",
+                    borderWidth: 4,
+                    opacity: 0.5,
+                  }
+                : { borderColor: null, borderWidth: 0, opacity: 1 },
+              {
+                width: "100%",
+                height: "100%",
+              },
+            ]}
             source={{ uri: this.props.url }}
           />
         </TouchableOpacity>
@@ -46,3 +69,10 @@ export default class FotoItem extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    opacity: 0.75,
+    backgroundColor: "darkgray",
+  },
+});
