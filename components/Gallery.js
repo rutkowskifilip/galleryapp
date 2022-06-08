@@ -86,8 +86,10 @@ export default class Gallery extends Component {
                   onPress={() => {
                     if (this.state.display == "grid") {
                       this.setState({ display: "list" });
+                      this.setState({ numColumns: 1 });
                     } else {
                       this.setState({ display: "grid" });
+                      this.setState({ numColumns: 3 });
                     }
                   }}
                 />
@@ -136,7 +138,7 @@ export default class Gallery extends Component {
             </View>
             <FlatList
               numColumns={this.state.numColumns}
-              //key={this.state.numColumns}
+              key={this.state.numColumns}
               data={this.state.photos}
               renderItem={({ item }) => (
                 <FotoItem
@@ -148,7 +150,7 @@ export default class Gallery extends Component {
                   height={
                     this.state.display === "grid"
                       ? Dimensions.get("window").height / 6
-                      : Dimensions.get("window").height / 2
+                      : Dimensions.get("window").height / 4
                   }
                   select={this.handleSelect}
                   itemHeight={item.height}

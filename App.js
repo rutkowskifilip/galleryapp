@@ -21,7 +21,7 @@ function App() {
           options={{
             title: "Gallery",
             headerStyle: {
-              backgroundColor: "#ff0000",
+              backgroundColor: "salmon",
             },
 
             headerTintColor: "#ffffff",

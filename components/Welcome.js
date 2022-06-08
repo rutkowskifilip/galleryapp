@@ -15,15 +15,32 @@ export default class Gallery extends Component {
     await Font.loadAsync({
       myfont: require("../assets/font.ttf"), // Uwaga: proszę w nazwie fonta nie używać dużych liter
     });
+
     this.setState({ fontloaded: true });
   };
 
   render() {
     return (
-      <View>
+      <View
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignContent: "center",
+          height: "100%",
+        }}
+      >
         {this.state.fontloaded ? (
           <TouchableOpacity
-            style={{ flex: 1, backgroundColor: "salmon" }}
+            style={{
+              flex: 1,
+              backgroundColor: "salmon",
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
             onPress={() => {
               this.props.navigation.navigate("Gallery");
             }}
@@ -32,9 +49,40 @@ export default class Gallery extends Component {
               style={{
                 fontFamily: "myfont",
                 fontSize: 100,
+                color: "white",
+                textAlign: "center",
+                fontWeight: "700",
+                marginBottom: 40,
               }}
             >
               Gallery App
+            </Text>
+            <Text
+              style={{
+                fontSize: 30,
+                color: "white",
+                textAlign: "center",
+              }}
+            >
+              show pictures
+            </Text>
+            <Text
+              style={{
+                fontSize: 30,
+                color: "white",
+                textAlign: "center",
+              }}
+            >
+              delete photo
+            </Text>
+            <Text
+              style={{
+                fontSize: 30,
+                color: "white",
+                textAlign: "center",
+              }}
+            >
+              share photo
             </Text>
           </TouchableOpacity>
         ) : null}

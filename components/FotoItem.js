@@ -55,6 +55,7 @@ export default class FotoItem extends Component {
                     borderColor: "white",
                     borderWidth: 4,
                     opacity: 0.5,
+                    borderRadius: 20,
                   }
                 : { borderColor: null, borderWidth: 0, opacity: 1 },
               {

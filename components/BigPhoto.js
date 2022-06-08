@@ -42,10 +42,13 @@ export default class BigPhoto extends Component {
         <View
           style={{
             position: "absolute",
-            bottom: 20,
+            bottom: 0,
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "white",
+            height: 60,
           }}
         >
           <Text style={{ width: "50%", textAlign: "center" }}>
